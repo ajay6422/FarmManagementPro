@@ -2,12 +2,16 @@ package com.example.cattlemanagement
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,6 +24,11 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var tvMonthMilk: TextView
 
     private lateinit var button : Button
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var menuBtn: ImageView
+    private lateinit var navigationView: NavigationView
+
 
 
     private val db = FirebaseDatabase.getInstance().reference
@@ -39,6 +48,18 @@ class DashboardActivity : AppCompatActivity() {
         tvTodayMilk = findViewById(R.id.tvTodayMilk)
         tvMonthMilk = findViewById(R.id.tvMonthMilk)
 
+        drawerLayout = findViewById(R.id.drawer_layout)
+        menuBtn = findViewById(R.id.menuBtn)
+        navigationView = findViewById(R.id.navigationView)
+
+        // 🔥 Drawer Click
+        menuBtn.setOnClickListener {
+            drawerLayout.openDrawer(Gravity.LEFT)
+        }
+
+        // 🔥 Drawer Menu Clicks
+        setupDrawerMenu()
+
         loadDashboardData()
         setupQuickActions()
         setupBottomNavigation()
@@ -54,6 +75,56 @@ class DashboardActivity : AppCompatActivity() {
 
 
 
+    }
+    private fun setupDrawerMenu() {
+
+        navigationView.setNavigationItemSelectedListener {
+
+            when (it.itemId) {
+
+                R.id.nav_dashboard -> {
+                    drawerLayout.closeDrawer(Gravity.LEFT)
+                    true
+                }
+
+                R.id.nav_cattle -> {
+                    startActivity(Intent(this, CowListActivity::class.java))
+                    true
+                }
+
+                R.id.nav_milk -> {
+                    startActivity(Intent(this, RecordMilkActivity::class.java))
+                    true
+                }
+
+                R.id.nav_health -> {
+                    startActivity(Intent(this, HealthActivity::class.java))
+                    true
+                }
+
+                R.id.nav_pregnancy -> {
+                    startActivity(Intent(this, PregnancyActivity::class.java))
+                    true
+                }
+
+                R.id.nav_market -> {
+                    // startActivity(Intent(this, ShopActivity::class.java))
+                    true
+                }
+
+                R.id.nav_ai -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+
+                R.id.nav_logout -> {
+                    finish()
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
 

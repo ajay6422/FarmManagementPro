@@ -23,9 +23,9 @@
 
             <ImageView
                 android:id="@+id/menuBtn"
-                android:layout_width="21dp"
-                android:layout_height="24dp"
-                android:src="@drawable/animals"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/list"
                 android:tint="@color/textColor" />
 
             <TextView
@@ -291,11 +291,6 @@
                         </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="#E6D5B8"/>
 
                 </LinearLayout>
 
@@ -427,7 +422,11 @@
                     android:fontFamily="@font/bold"
                     android:id="@+id/btnChat"/>
 
-
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#E6D5B8" />
 
 
             </LinearLayout>
@@ -448,5 +447,16 @@
 
 
     </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/background"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        app:itemIconTint="@color/textColor"
+        app:itemTextColor="@color/textColor"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
