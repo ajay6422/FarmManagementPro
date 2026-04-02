@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Milk Production"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/bold"
+        android:textStyle="bold"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:id="@+id/tvMilkCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 records"
+        android:textStyle="bold"
+        android:alpha="0.7"
+
+        android:textSize="15sp"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="4dp"/>
+
+    <!-- ADD BUTTON -->
+    <Button
+        android:id="@+id/btnAddMilk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Add Record"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white"/>
+    <!-- 🔍 SEARCH -->
+    <EditText
+        android:id="@+id/etSearchCow"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Search by Cow No..."
+        android:background="@drawable/input_box_bg"
+        android:padding="12dp"
+        android:layout_marginTop="10dp"/>
+
+    <!-- 📅 MONTH FILTER -->
+    <Spinner
+        android:id="@+id/spinnerMonth"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_box_bg"/>
+
+    <!-- 📊 TOTAL -->
+    <TextView
+        android:id="@+id/tvTotalMilk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: 0 L"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="10dp"/>
+
+    <!-- LIST -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutMilkList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </ScrollView>
+
+</LinearLayout>

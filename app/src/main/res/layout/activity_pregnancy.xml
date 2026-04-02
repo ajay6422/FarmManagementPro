@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pregnancy Tracking"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/bold"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvPregCount"
+        android:text="0 active pregnancies"
+        android:textSize="14sp"
+        android:alpha="0.7"
+        android:textColor="@color/textColor"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="4dp"/>
+
+    <!-- ADD BUTTON -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddPregnancy"
+        android:text="+ Add Pregnancy"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/accent"
+        android:textColor="@color/white"/>
+
+    <!-- LIST -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutPregList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </ScrollView>
+
+</LinearLayout>

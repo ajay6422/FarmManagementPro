@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- ================= HEADER ================= -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back"
+            android:tint="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Cow Details"
+            android:layout_marginTop="50dp"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/textColor"
+            android:fontFamily="@font/bold" />
+    </RelativeLayout>
+
+    <!-- ================= CONTENT ================= -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- IMAGE + BASIC DETAILS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCowDetails"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:scaleType="centerCrop"
+                    android:background="#DDDDDD"
+                    android:src="@drawable/home" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="12dp">
+
+                    <TextView android:id="@+id/tvDobDetails" style="@style/detailRow"/>
+                    <View style="@style/detailDivider"/>
+
+                    <TextView android:id="@+id/tvBornTypeDetails" style="@style/detailRow"/>
+                    <View style="@style/detailDivider"/>
+
+                    <TextView android:id="@+id/tvLactationDetails" style="@style/detailRow"/>
+                    <View style="@style/detailDivider"/>
+
+                    <TextView android:id="@+id/tvSireDetails" style="@style/detailRow"/>
+                    <View style="@style/detailDivider"/>
+
+                    <TextView android:id="@+id/tvDamDetails" style="@style/detailRow"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Space -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <!-- OTHER DETAILS -->
+            <TextView android:id="@+id/tvCalvingDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvYieldDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <!-- ✅ NEW MILK SECTION -->
+            <TextView
+                android:id="@+id/tvMilkDetails"
+                style="@style/detailRow" />
+
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvDewormingDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvAiDateDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvPregDateDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvProgDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvMedicalDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvRemarksDetails" style="@style/detailRow"/>
+            <View style="@style/detailDivider"/>
+
+            <TextView android:id="@+id/tvVaccinesDetails" style="@style/detailRow"/>
+
+            <!-- BUTTON SECTION -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnPrev"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="Previous Cow"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@color/textColor"/>
+
+                <Button
+                    android:id="@+id/btnNext"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="Next Cow"
+                    android:fontFamily="@font/semibold"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginStart="8dp"
+                    android:backgroundTint="@color/textColor"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

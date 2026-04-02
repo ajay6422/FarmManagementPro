@@ -1,0 +1,68 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+
+    <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Add Health Record"
+        android:layout_marginTop="50dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/textColor"/>
+
+        <!-- Cow Dropdown -->
+        <Spinner
+            android:id="@+id/spinnerCow"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/input_box_bg"/>
+
+        <!-- Record -->
+        <EditText
+            android:id="@+id/etHealth"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/input_box_bg"
+            android:hint="Health Issue / Treatment"
+            android:padding="12dp"/>
+
+        <!-- Date -->
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/input_box_bg"
+            android:hint="Date"
+            android:focusable="false"
+            android:clickable="true"
+            android:padding="12dp"/>
+
+        <!-- Save -->
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Save Record"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/bold"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/textColor"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

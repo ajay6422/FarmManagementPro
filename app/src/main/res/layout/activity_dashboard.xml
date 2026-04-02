@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- MAIN CONTENT -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:background="@color/background">
+
+        <!-- HEADER -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/menuBtn"
+                android:layout_width="21dp"
+                android:layout_height="24dp"
+                android:src="@drawable/animals"
+                android:tint="@color/textColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/textColor"
+                android:fontFamily="@font/bold"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <!-- CONTENT -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- GREETING -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome back, Avni Kadiyan!"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="@color/textColor"
+                    android:fontFamily="@font/bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avni's Dairy Farm Overview"
+                    android:alpha="0.7"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColor"
+                    android:fontFamily="@font/bold"/>
+
+                <!-- 🔥 FIXED BANNER (REDUCED HEIGHT) -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/card_bg_rounded"
+                    android:elevation="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/dairy_banner"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Smart Dairy Management"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/bold"
+                        android:layout_gravity="bottom|start"
+                        android:background="#66000000"
+                        android:padding="6dp"
+                        />
+                </FrameLayout>
+
+                <!-- STATS GRID -->
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- ROW 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- CARD -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:id="@+id/cardAnimals"
+                            android:layout_height="120dp"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardBackgroundColor="@android:color/white">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:src="@drawable/farm"
+                                    android:tint="@color/textColor"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="TOTAL ANIMALS"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/textColor"
+                                    android:fontFamily="@font/bold"
+                                    android:alpha="0.7"/>
+
+                                <TextView
+                                    android:id="@+id/tvTotalAnimals"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/textColor"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- CARD -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardBackgroundColor="@android:color/white">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:src="@drawable/heart"
+                                    android:tint="@color/textColor"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="ACTIVE PREGNANCIES"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/textColor"
+                                    android:fontFamily="@font/bold"
+                                    android:alpha="0.7"/>
+
+                                <TextView
+                                    android:id="@+id/tvPregCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/textColor"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                    <!-- ROW 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!-- TODAY -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardBackgroundColor="@android:color/white">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:src="@drawable/milk"
+                                    android:tint="@color/textColor"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="TODAY'S MILK (L)"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textColor="@color/textColor"
+                                    android:alpha="0.7"/>
+
+                                <TextView
+                                    android:id="@+id/tvTodayMilk"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0.0"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textColor="@color/textColor"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- MONTH -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="0dp"
+                            android:layout_height="120dp"
+                            android:layout_weight="1"
+                            android:layout_margin="8dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="8dp"
+                            app:cardBackgroundColor="@android:color/white">
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:padding="12dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <ImageView
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:src="@drawable/graph"
+                                    android:tint="@color/textColor"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="THIS MONTH (L)"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textColor="@color/textColor"
+                                    android:alpha="0.7"/>
+
+                                <TextView
+                                    android:id="@+id/tvMonthMilk"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0.0"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/bold"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/textColor"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#E6D5B8"/>
+
+                </LinearLayout>
+
+                <!-- QUICK ACTIONS (UNCHANGED) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Actions"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/bold"
+
+                    android:textColor="@color/textColor"
+                    android:layout_marginTop="20dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <!-- ADD ANIMAL -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardMilk"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_weight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/milk"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Record Milk"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/bold"
+                                android:textColor="@color/textColor"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- RECORD MILK -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardHealth"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_weight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/health"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Health Record"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/bold"
+                                android:textColor="@color/textColor"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- MARKETPLACE -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPregnancy"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_weight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@color/background"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:src="@drawable/heart"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Track Pregnancy"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/bold"
+                                android:textColor="@color/textColor"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#E6D5B8"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/textColor"
+                    android:text="Chat Bot"
+                    android:fontFamily="@font/bold"
+                    android:id="@+id/btnChat"/>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </ScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:itemIconTint="@color/textColor"
+            app:itemTextColor="@color/textColor"
+            app:itemRippleColor="@color/background"
+            app:menu="@menu/bottom_nav_buttons"/>
+
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

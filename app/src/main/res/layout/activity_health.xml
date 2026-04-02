@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- TITLE -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Health Records"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:id="@+id/tvHealthCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 records"
+        android:textSize="14sp"
+        android:fontFamily="@font/bold"
+        android:textStyle="bold"
+        android:alpha="0.7"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="4dp"/>
+
+    <!-- ADD BUTTON -->
+    <Button
+        android:id="@+id/btnAddHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ Add Record"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/bold"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/textColor"/>
+
+    <!-- LIST -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutHealthList"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"/>
+    </ScrollView>
+
+</LinearLayout>

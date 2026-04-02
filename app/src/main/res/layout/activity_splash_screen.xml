@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SplashScreen">
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingTop="50dp"
+        android:layout_height="wrap_content"
+        android:text="Cattle Management App"
+        android:gravity="center"
+        android:fontFamily="@font/bold"
+        android:textSize="20dp"
+        android:textColor="#556B2F"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:paddingTop="40dp"
+        android:layout_height="wrap_content"
+        android:text="Manage Your Farm Animals And \nKeep A Track Of Them"
+        android:gravity="center"
+        android:fontFamily="@font/bold"
+        android:textSize="13dp"
+        android:textColor="#556B2F"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/splashscreen"
+        android:paddingTop="20dp"
+        android:layout_gravity="center"/>
+
+
+
+
+</LinearLayout>
