@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/home"/>
+
+
+    <item
+        android:id="@+id/nav_cattle"
+        android:title="My Cattle"
+        android:icon="@drawable/ic_cow"/>
+
+    <item
+        android:id="@+id/nav_milk"
+        android:title="Milk Records"
+        android:icon="@drawable/milk"/>
+
+    <item
+        android:id="@+id/nav_health"
+        android:title="Health Records"
+        android:icon="@drawable/health"/>
+
+    <item
+        android:id="@+id/nav_pregnancy"
+        android:title="Pregnancy Tracking"
+        android:icon="@drawable/heart"/>
+
+    <item
+        android:id="@+id/nav_market"
+        android:title="Marketplace"
+        android:icon="@drawable/market"/>
+
+    <item
+        android:id="@+id/nav_ai"
+        android:title="AI Detection"
+        android:icon="@drawable/detect"/>
+    <item
+        android:id="@+id/nav_pin"
+        android:title="Set PIN"
+        android:icon="@drawable/img" />
+
+    <item
+        android:id="@+id/nav_biometric"
+        android:title="Enable Biometric"
+        android:icon="@drawable/ic_fingerprint" />
+
+    <item
+        android:id="@+id/nav_disable_lock"
+        android:title="Disable App Lock"
+        android:icon="@drawable/unloack" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:title="Logout"
+        android:icon="@drawable/logout"/>
+
+
+</menu>

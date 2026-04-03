@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/background"
+    tools:context=".ForgetPin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="24dp"
+            android:background="@drawable/bg_forget_pin_card">
+
+            <ImageView
+                android:id="@+id/ivForgotPin"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/email"
+                android:contentDescription="Forgot PIN icon"
+                android:tint="@color/textColor"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvForgetTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot PIN?"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                android:fontFamily="@font/bold"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvForgetSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter your registered email to verify your account and reset your PIN."
+                android:textColor="@color/textColor"
+                android:textSize="15sp"
+                android:fontFamily="@font/semibold"
+                android:gravity="center"
+                android:alpha="0.75"
+                android:layout_marginBottom="24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail Address"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:startIconTint="@color/textColor"
+                app:boxStrokeColor="@color/textColor"
+                app:hintTextColor="@color/textColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/textColor"
+                    android:textSize="16sp"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnVerify"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:text="Verify and Reset PIN"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:fontFamily="@font/bold"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/textColor" />
+
+            <TextView
+                android:id="@+id/tvBackToPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Back to PIN"
+                android:textColor="@color/textColor"
+                android:textSize="14sp"
+                android:fontFamily="@font/semibold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#556B2F</color>
+    <color name="background">#e7e7e7</color>
+    <color name="black">#FF000000</color>
+    <color name="textColor">#556B2F</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Cattle Management</string>
+    <string name="gcm_defaultSenderId" translatable="false">1031635841781</string>
+    <string name="google_api_key" translatable="false">AIzaSyBu_NWBSWfBKsUo_LbWi4xviPEpOQZKog4</string>
+    <string name="google_app_id" translatable="false">1:1031635841781:android:ea910acdf03fe407330bbc</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBu_NWBSWfBKsUo_LbWi4xviPEpOQZKog4</string>
+    <string name="google_storage_bucket" translatable="false">cattle-management-b48dc.firebasestorage.app</string>
+    <string name="hint_message">Ask about dairy farm, cow, buffalo...</string>
+    <string name="project_id" translatable="false">cattle-management-b48dc</string>
+    <string name="send">Send</string>
+    <style name="Base.Theme.CattleManagement" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="BottomNavText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">@font/bold</item>
+        <item name="fontFamily">@font/bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="PinKey">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:fontFamily">@font/bold</item>
+        <item name="android:background">@drawable/pin_key_bg</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+    <style name="Theme.CattleManagement" parent="Base.Theme.CattleManagement"/>
+    <style name="detailDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#DDDDDD</item>
+    </style>
+    <style name="detailRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+</resources>

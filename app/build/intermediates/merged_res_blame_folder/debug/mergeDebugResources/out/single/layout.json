@@ -1,0 +1,154 @@
+[
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_cow_list.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_cow_list.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_category_details.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_category_details.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/shopping.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/shopping.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_forget_pin.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_forget_pin.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_scan.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_scan.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_create_account.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_create_account.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/item_bot_message.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/item_bot_message.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_cow_details.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_cow_details.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_pin.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_pin.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_splash_screen.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_splash_screen.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_animals.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_animals.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_become_vendor.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_become_vendor.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_detect.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_detect.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/item_product.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/item_product.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_product.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_product.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_machines.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_machines.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_products.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_products.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/item_user_message.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/item_user_message.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_health_vendor.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_health_vendor.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_new_pin.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_new_pin.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/dialog_add_health.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/dialog_add_health.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/dialog_add_pregnancy.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/dialog_add_pregnancy.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_chat.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_chat.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/nav_header.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/nav_header.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_add_cow.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_add_cow.xml"
+    },
+    {
+        "merged": "com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_splash_screen.xml",
+        "source": "com.example.cattlemanagement.app-main-59:/layout/activity_splash_screen.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_feed.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_feed.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/fragment_breed_detection.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/fragment_breed_detection.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/item_pregnancy.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/item_pregnancy.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_main.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_health.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_health.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_main2.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_dashboard.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_record_milk.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_record_milk.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_pregnancy.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_pregnancy.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/item_cow.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/item_cow.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/activity_forgot_pwd.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/activity_forgot_pwd.xml"
+    },
+    {
+        "merged": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-mergeDebugResources-56:/layout/dialog_add_milk.xml",
+        "source": "/Users/ajaykumar/.gradle/daemon/9.1.0/com.example.cattlemanagement.app-main-59:/layout/dialog_add_milk.xml"
+    }
+]

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home"
+        android:title="Home">
+    </item>
+    <item
+        android:id="@+id/animals"
+        android:icon="@drawable/animals"
+        android:title="Animals">
+    </item>
+    <item
+        android:id="@+id/detection"
+        android:icon="@drawable/detect"
+        android:title="Detection">
+    </item>
+    <item
+        android:id="@+id/farm"
+        android:icon="@drawable/farm"
+        android:title="Add Cow">
+    </item>
+    <item android:id="@+id/market"
+        android:icon="@drawable/market"
+        android:title="MarketPlace">
+    </item>
+
+</menu>

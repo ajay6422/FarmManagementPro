@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:text="Identify Your Animal Breed"
+        android:textColor="@color/textColor"
+        android:textSize="20sp" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:columnCount="2"
+        android:useDefaultMargins="true">
+
+        <!-- Scan Animal -->
+        <RelativeLayout
+            android:id="@+id/btnScan"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/input_box_bg"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/camera" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="Scan Animal"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- From Gallery -->
+        <RelativeLayout
+            android:id="@+id/btnGallery"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/input_box_bg"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/gallery" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="From Gallery"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- Animals -->
+        <RelativeLayout
+            android:id="@+id/btnAnimals"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/input_box_bg"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/livestock" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="Animals"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <!-- History -->
+        <RelativeLayout
+            android:id="@+id/btnHistory"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_columnWeight="1"
+            android:background="@drawable/input_box_bg"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/history" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:fontFamily="@font/bold"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:text="History"
+                android:textColor="@color/textColor"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </GridLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        app:itemActiveIndicatorStyle="@color/background"
+        app:itemIconTint="@color/textColor"
+        app:itemTextColor="@color/textColor"
+        app:menu="@menu/bottom_nav_buttons" />
+
+
+</LinearLayout>
