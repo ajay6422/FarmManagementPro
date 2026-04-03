@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,12 +17,15 @@ class HealthActivity : AppCompatActivity() {
 
     private lateinit var layoutList: LinearLayout
     private lateinit var tvCount: TextView
+    private lateinit var auth: FirebaseAuth
 
     private val db = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_health)
+
+        auth = FirebaseAuth.getInstance()
 
         layoutList = findViewById(R.id.layoutHealthList)
         tvCount = findViewById(R.id.tvHealthCount)
@@ -33,19 +37,23 @@ class HealthActivity : AppCompatActivity() {
         loadHealthRecords()
     }
 
-    // 🔥 LOAD RECORDS
     private fun loadHealthRecords() {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        db.child("health_records")
+        db.child("users_data")
+            .child(uid)
+            .child("health_records")
             .addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     layoutList.removeAllViews()
                     tvCount.text = "${snapshot.childrenCount} records"
 
                     for (snap in snapshot.children) {
-
                         val cow = snap.child("cowNo").value?.toString() ?: "-"
                         val record = snap.child("record").value?.toString() ?: "-"
                         val date = snap.child("date").value?.toString() ?: "-"
@@ -71,12 +79,15 @@ class HealthActivity : AppCompatActivity() {
 
                         val tvCow = TextView(this@HealthActivity)
                         tvCow.text = "🐄 Cow: $cow"
+                        tvCow.setTextColor(ContextCompat.getColor(this@HealthActivity, R.color.textColor))
 
                         val tvRecord = TextView(this@HealthActivity)
                         tvRecord.text = "💊 $record"
+                        tvRecord.setTextColor(ContextCompat.getColor(this@HealthActivity, R.color.textColor))
 
                         val tvDate = TextView(this@HealthActivity)
                         tvDate.text = "📅 Date: $date"
+                        tvDate.setTextColor(ContextCompat.getColor(this@HealthActivity, R.color.textColor))
 
                         inner.addView(tvCow)
                         inner.addView(tvRecord)
@@ -84,12 +95,15 @@ class HealthActivity : AppCompatActivity() {
 
                         card.addView(inner)
 
-                        // DELETE
                         card.setOnLongClickListener {
                             AlertDialog.Builder(this@HealthActivity)
                                 .setTitle("Delete Record?")
                                 .setPositiveButton("Yes") { _, _ ->
-                                    db.child("health_records").child(key).removeValue()
+                                    db.child("users_data")
+                                        .child(uid)
+                                        .child("health_records")
+                                        .child(key)
+                                        .removeValue()
                                 }
                                 .setNegativeButton("No", null)
                                 .show()
@@ -100,12 +114,18 @@ class HealthActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@HealthActivity, error.message, Toast.LENGTH_SHORT).show()
+                }
             })
     }
 
-    // ➕ ADD DIALOG
     private fun openDialog() {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val view = LayoutInflater.from(this)
             .inflate(R.layout.dialog_add_health, null)
@@ -126,33 +146,38 @@ class HealthActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        // LOAD COWS
-        db.child("cows").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
+        db.child("users_data")
+            .child(uid)
+            .child("cows")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    cowList.clear()
+                    cowList.add("Select Cow")
 
-                cowList.clear()
-                cowList.add("Select Cow")
+                    for (snap in snapshot.children) {
+                        val cow = snap.child("cowNo").value?.toString()
+                        if (!cow.isNullOrEmpty()) cowList.add(cow)
+                    }
 
-                for (snap in snapshot.children) {
-                    val cow = snap.child("cowNo").value?.toString()
-                    if (!cow.isNullOrEmpty()) cowList.add(cow)
+                    adapter.notifyDataSetChanged()
                 }
 
-                adapter.notifyDataSetChanged()
-            }
-
-            override fun onCancelled(error: DatabaseError) {}
-        })
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@HealthActivity, error.message, Toast.LENGTH_SHORT).show()
+                }
+            })
 
         val calendar = Calendar.getInstance()
 
         etDate.setOnClickListener {
-            DatePickerDialog(this, { _, y, m, d ->
-                val cal = Calendar.getInstance()
-                cal.set(y, m, d)
-                val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                etDate.setText(format.format(cal.time))
-            },
+            DatePickerDialog(
+                this,
+                { _, y, m, d ->
+                    val cal = Calendar.getInstance()
+                    cal.set(y, m, d)
+                    val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    etDate.setText(format.format(cal.time))
+                },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
@@ -164,10 +189,9 @@ class HealthActivity : AppCompatActivity() {
             .create()
 
         btnSave.setOnClickListener {
-
             val cow = spinner.selectedItem.toString()
-            val record = etHealth.text.toString()
-            val date = etDate.text.toString()
+            val record = etHealth.text.toString().trim()
+            val date = etDate.text.toString().trim()
 
             if (cow == "Select Cow" || record.isEmpty() || date.isEmpty()) {
                 Toast.makeText(this, "Fill all fields", Toast.LENGTH_SHORT).show()
@@ -179,10 +203,18 @@ class HealthActivity : AppCompatActivity() {
             map["record"] = record
             map["date"] = date
 
-            db.child("health_records").push().setValue(map)
-
-            Toast.makeText(this, "Health Saved ❤️", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
+            db.child("users_data")
+                .child(uid)
+                .child("health_records")
+                .push()
+                .setValue(map)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Health Saved ❤️", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to save record", Toast.LENGTH_SHORT).show()
+                }
         }
 
         dialog.show()

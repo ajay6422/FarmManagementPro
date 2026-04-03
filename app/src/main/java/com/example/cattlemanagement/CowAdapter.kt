@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlemanagement.CowModel
 import java.io.File
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Locale
 
 class CowAdapter(private val cowList: ArrayList<CowModel>) :
     RecyclerView.Adapter<CowAdapter.CowViewHolder>() {
@@ -27,7 +25,7 @@ class CowAdapter(private val cowList: ArrayList<CowModel>) :
         val cowNo: TextView = itemView.findViewById(R.id.tvCowNo)
         val dob: TextView = itemView.findViewById(R.id.tvDob)
         val yield: TextView = itemView.findViewById(R.id.tvYield)
-        val location: TextView = itemView.findViewById(R.id.tvLocation)
+        val bornType: TextView = itemView.findViewById(R.id.tvLocation)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CowViewHolder {
@@ -42,14 +40,12 @@ class CowAdapter(private val cowList: ArrayList<CowModel>) :
         holder.cowNo.text = "Cow No: ${cow.cowNo}"
         holder.dob.text = "DOB: ${cow.dob}"
         holder.yield.text = "Milk Yield: ${cow.yield} L"
-        holder.location.text = "Location: ${cow.location}"
+        holder.bornType.text = "Born Type: ${cow.bornType}"
 
         if (cow.imagePath.isNotEmpty()) {
             val file = File(cow.imagePath)
             if (file.exists()) {
-                holder.imgCow.setImageBitmap(
-                    BitmapFactory.decodeFile(file.absolutePath)
-                )
+                holder.imgCow.setImageBitmap(BitmapFactory.decodeFile(file.absolutePath))
             } else {
                 holder.imgCow.setImageResource(R.drawable.home)
             }
@@ -57,18 +53,16 @@ class CowAdapter(private val cowList: ArrayList<CowModel>) :
             holder.imgCow.setImageResource(R.drawable.home)
         }
 
-        // 🔥 OPEN DETAILS SCREEN (NEW ADDITION)
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, CowDetailsActivity::class.java)
-            intent.putExtra("cowNo", cow.cowNo)
+            intent.putExtra("COW_KEY", cow.firebaseKey)
             context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int = displayList.size
 
-    // 🔍 SEARCH FILTER (UNCHANGED)
     fun filter(query: String) {
         displayList.clear()
 
@@ -77,7 +71,9 @@ class CowAdapter(private val cowList: ArrayList<CowModel>) :
         } else {
             val searchText = query.lowercase(Locale.getDefault())
             for (cow in cowList) {
-                if (cow.cowNo.lowercase(Locale.getDefault()).contains(searchText)) {
+                if (cow.cowNo.lowercase(Locale.getDefault()).contains(searchText) ||
+                    cow.bornType.lowercase(Locale.getDefault()).contains(searchText)
+                ) {
                     displayList.add(cow)
                 }
             }
@@ -85,7 +81,6 @@ class CowAdapter(private val cowList: ArrayList<CowModel>) :
         notifyDataSetChanged()
     }
 
-    // 🔄 FIREBASE UPDATE (UNCHANGED)
     fun refreshData() {
         displayList.clear()
         displayList.addAll(cowList)

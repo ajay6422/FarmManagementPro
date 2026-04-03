@@ -7,13 +7,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
     tools:context=".CreateAccount">
+
     <ImageView
         android:id="@+id/imgback"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
-        android:src="@drawable/backbtn"/>
+        android:src="@drawable/backbtn" />
 
     <TextView
         android:layout_width="match_parent"
@@ -22,7 +25,8 @@
         android:gravity="center"
         android:text="Create New Account"
         android:textColor="@color/textColor"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -30,15 +34,17 @@
         android:background="@drawable/input_box_bg"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
+
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="Enter Your Name"
-            android:inputType="textEmailAddress"
+            android:inputType="textPersonName"
             android:paddingEnd="40dp"
             android:textSize="16sp" />
+
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -48,10 +54,36 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_box_bg"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <EditText
+            android:id="@+id/etFarmName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="Enter Dairy Farm Name"
+            android:inputType="textPersonName"
+            android:paddingEnd="40dp"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/farm" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_box_bg"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
@@ -78,7 +110,7 @@
         android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/input_box_bg"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
@@ -89,7 +121,7 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="Enter Password"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:paddingEnd="40dp"
             android:textSize="16sp" />
 
@@ -109,6 +141,6 @@
         android:backgroundTint="@color/textColor"
         android:fontFamily="@font/bold"
         android:text="SignUp"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
 
 </LinearLayout>

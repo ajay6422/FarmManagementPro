@@ -4,14 +4,13 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CattleManagement">
 
-        <activity android:name=".ChatActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
         <activity
             android:name=".DetectActivity"
             android:exported="false" />
@@ -45,7 +45,9 @@
             android:exported="false" />
         <activity
             android:name=".PinActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".MainActivity2"
             android:exported="false" />
@@ -63,9 +65,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Become_vendor"
@@ -84,7 +86,7 @@
             android:exported="true" />
         <activity
             android:name=".Shopping"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".category_details"
             android:exported="false" />
@@ -106,6 +108,18 @@
         <activity
             android:name=".AnimalsActivity"
             android:exported="false" />
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

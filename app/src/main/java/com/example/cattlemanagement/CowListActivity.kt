@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cattlemanagement.CowModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class CowListActivity : AppCompatActivity() {
@@ -19,9 +20,14 @@ class CowListActivity : AppCompatActivity() {
     private lateinit var adapter: CowAdapter
     private val cowList = ArrayList<CowModel>()
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var cowRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cow_list)
+
+        auth = FirebaseAuth.getInstance()
 
         recyclerView = findViewById(R.id.recyclerCows)
         etSearchCow = findViewById(R.id.etSearchCow)
@@ -39,31 +45,35 @@ class CowListActivity : AppCompatActivity() {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.animals -> true
+
                 R.id.market -> {
                     startActivity(Intent(this, Shopping::class.java))
                     true
                 }
+
                 R.id.home -> {
                     startActivity(Intent(this, DashboardActivity::class.java))
                     finish()
                     true
                 }
+
                 R.id.detection -> {
                     startActivity(Intent(this, ScanActivity::class.java))
                     finish()
                     true
                 }
+
                 R.id.farm -> {
                     startActivity(Intent(this, AddCowActivity::class.java))
                     finish()
                     true
                 }
+
                 else -> false
             }
         }
     }
 
-    // 🔍 SEARCH BAR LOGIC
     private fun setupSearch() {
         etSearchCow.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -76,24 +86,37 @@ class CowListActivity : AppCompatActivity() {
         })
     }
 
-
-
-    // 🔥 FIREBASE FETCH (ALL COWS)
     private fun fetchCows() {
-        FirebaseDatabase.getInstance()
-            .reference.child("cows")
-            .addValueEventListener(object : ValueEventListener {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    cowList.clear()
-                    for (snap in snapshot.children) {
-                        val cow = snap.getValue(CowModel::class.java)
-                        cow?.let { cowList.add(it) }
+        cowRef = FirebaseDatabase.getInstance()
+            .reference
+            .child("users_data")
+            .child(uid)
+            .child("cows")
+
+        cowRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                cowList.clear()
+
+                for (snap in snapshot.children) {
+                    val cow = snap.getValue(CowModel::class.java)
+                    if (cow != null) {
+                        cow.firebaseKey = snap.key ?: ""
+                        cowList.add(cow)
                     }
-                    adapter.refreshData() // IMPORTANT
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
-            })
+                adapter.refreshData()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@CowListActivity, error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

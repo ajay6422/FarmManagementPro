@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_dashboard"
         android:title="Dashboard"
-        android:icon="@drawable/heart"/>
+        android:icon="@drawable/home"/>
 
 
     <item
@@ -36,10 +36,25 @@
         android:id="@+id/nav_ai"
         android:title="AI Detection"
         android:icon="@drawable/detect"/>
+    <item
+        android:id="@+id/nav_pin"
+        android:title="Set PIN"
+        android:icon="@drawable/img" />
+
+    <item
+        android:id="@+id/nav_biometric"
+        android:title="Enable Biometric"
+        android:icon="@drawable/ic_fingerprint" />
+
+    <item
+        android:id="@+id/nav_disable_lock"
+        android:title="Disable App Lock"
+        android:icon="@drawable/unloack" />
 
     <item
         android:id="@+id/nav_logout"
         android:title="Logout"
-        android:icon="@drawable/heart"/>
+        android:icon="@drawable/logout"/>
+
 
 </menu>

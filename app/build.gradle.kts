@@ -80,11 +80,17 @@ dependencies {
     implementation(libs.googleid)
 
     implementation("org.tensorflow:tensorflow-lite:2.17.0")
-
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+    implementation("androidx.biometric:biometric:1.1.0")
+    implementation("androidx.security:security-crypto:1.1.0")
+
+    implementation("com.github.yalantis:ucrop:2.2.8")
+    implementation("com.github.yalantis:ucrop:2.2.11-native")
+
 }

@@ -25,7 +25,7 @@ class ScanActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.detection -> true
                 R.id.market -> {
-                    // startActivity(Intent(this, ShopActivity::class.java))
+                    startActivity(Intent(this, Shopping::class.java))
                     true
                 }
                 R.id.home -> {

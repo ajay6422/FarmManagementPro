@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -16,11 +17,14 @@ class PregnancyActivity : AppCompatActivity() {
     private lateinit var tvCount: TextView
     private lateinit var btnAdd: Button
 
+    private lateinit var auth: FirebaseAuth
     private val db = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pregnancy)
+
+        auth = FirebaseAuth.getInstance()
 
         layoutList = findViewById(R.id.layoutPregList)
         tvCount = findViewById(R.id.tvPregCount)
@@ -29,24 +33,28 @@ class PregnancyActivity : AppCompatActivity() {
         loadPregnancyData()
 
         btnAdd.setOnClickListener {
-            openAddDialog()   // ✅ This will now use updated function
+            openAddDialog()
         }
     }
 
-    // 🔥 LOAD PREGNANT COWS
     private fun loadPregnancyData() {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
-        db.child("cows")
+        db.child("users_data")
+            .child(uid)
+            .child("cows")
             .addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     layoutList.removeAllViews()
 
                     var count = 0
 
                     for (snap in snapshot.children) {
-
                         val cowNo = snap.child("cowNo").value?.toString() ?: continue
                         val pregSnap = snap.child("pregnancy")
 
@@ -60,9 +68,9 @@ class PregnancyActivity : AppCompatActivity() {
                         val view = LayoutInflater.from(this@PregnancyActivity)
                             .inflate(R.layout.item_pregnancy, layoutList, false)
 
-                        view.findViewById<TextView>(R.id.tvCow).text = "🐄 Cow: $cowNo"
-                        view.findViewById<TextView>(R.id.tvBreed).text = "📅 Breeding: $breedDate"
-                        view.findViewById<TextView>(R.id.tvDelivery).text = "🤰 Delivery: $delivery"
+                        view.findViewById<TextView>(R.id.tvCow).text = "Cow: $cowNo"
+                        view.findViewById<TextView>(R.id.tvBreed).text = "Breeding: $breedDate"
+                        view.findViewById<TextView>(R.id.tvDelivery).text = "Delivery: $delivery"
 
                         layoutList.addView(view)
                     }
@@ -76,12 +84,18 @@ class PregnancyActivity : AppCompatActivity() {
                     }
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@PregnancyActivity, error.message, Toast.LENGTH_SHORT).show()
+                }
             })
     }
 
-    // ✅ UPDATED DIALOG FUNCTION (YOUR FIX ADDED HERE)
     private fun openAddDialog() {
+        val uid = auth.currentUser?.uid
+        if (uid == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
 
         val view = LayoutInflater.from(this)
             .inflate(R.layout.dialog_add_pregnancy, null)
@@ -92,13 +106,14 @@ class PregnancyActivity : AppCompatActivity() {
         val etNotes = view.findViewById<EditText>(R.id.etNotes)
         val btnSave = view.findViewById<Button>(R.id.btnSave)
 
-        val cowList = ArrayList<String>()
-        cowList.add("Select Cow")
+        val cowNames = ArrayList<String>()
+        val cowKeyMap = HashMap<String, String>()
+        cowNames.add("Select Cow")
 
         val adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            cowList
+            cowNames
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
@@ -107,70 +122,77 @@ class PregnancyActivity : AppCompatActivity() {
             .setView(view)
             .create()
 
-        // 🔥 LOAD COWS FROM FIREBASE
-        db.child("cows")
+        db.child("users_data")
+            .child(uid)
+            .child("cows")
             .addListenerForSingleValueEvent(object : ValueEventListener {
 
                 override fun onDataChange(snapshot: DataSnapshot) {
-
-                    cowList.clear()
-                    cowList.add("Select Cow")
+                    cowNames.clear()
+                    cowKeyMap.clear()
+                    cowNames.add("Select Cow")
 
                     for (snap in snapshot.children) {
-                        val cow = snap.child("cowNo").value?.toString()
-                        if (!cow.isNullOrEmpty()) {
-                            cowList.add(cow)
+                        val cowNo = snap.child("cowNo").value?.toString()
+                        val cowKey = snap.key
+
+                        if (!cowNo.isNullOrEmpty() && !cowKey.isNullOrEmpty()) {
+                            cowNames.add(cowNo)
+                            cowKeyMap[cowNo] = cowKey
                         }
                     }
 
                     adapter.notifyDataSetChanged()
                 }
 
-                override fun onCancelled(error: DatabaseError) {}
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@PregnancyActivity, error.message, Toast.LENGTH_SHORT).show()
+                }
             })
 
         val calendar = Calendar.getInstance()
+        val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-        // 📅 BREED DATE
         etBreed.setOnClickListener {
-            DatePickerDialog(this, { _, y, m, d ->
+            DatePickerDialog(
+                this,
+                { _, y, m, d ->
+                    val cal = Calendar.getInstance()
+                    cal.set(y, m, d)
 
-                val cal = Calendar.getInstance()
-                cal.set(y, m, d)
+                    etBreed.setText(format.format(cal.time))
 
-                val format = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-
-                etBreed.setText(format.format(cal.time))
-
-                cal.add(Calendar.DAY_OF_YEAR, 280)
-                etDelivery.setText(format.format(cal.time))
-
-            },
+                    cal.add(Calendar.DAY_OF_YEAR, 280)
+                    etDelivery.setText(format.format(cal.time))
+                },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
 
-        // 📅 DELIVERY DATE
         etDelivery.setOnClickListener {
-            DatePickerDialog(this, { _, y, m, d ->
-                etDelivery.setText("$d/${m + 1}/$y")
-            },
+            DatePickerDialog(
+                this,
+                { _, y, m, d ->
+                    val cal = Calendar.getInstance()
+                    cal.set(y, m, d)
+                    etDelivery.setText(format.format(cal.time))
+                },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
                 calendar.get(Calendar.DAY_OF_MONTH)
             ).show()
         }
 
-        // ✅ SAVE
         btnSave.setOnClickListener {
+            val selectedCow = spinner.selectedItem.toString()
+            val cowKey = cowKeyMap[selectedCow]
+            val breed = etBreed.text.toString().trim()
+            val delivery = etDelivery.text.toString().trim()
+            val notes = etNotes.text.toString().trim()
 
-            val cow = spinner.selectedItem.toString()
-            val breed = etBreed.text.toString()
-            val delivery = etDelivery.text.toString()
-
-            if (cow == "Select Cow") {
+            if (selectedCow == "Select Cow") {
                 Toast.makeText(this, "Please select cow", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -180,18 +202,29 @@ class PregnancyActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (cowKey.isNullOrEmpty()) {
+                Toast.makeText(this, "Invalid cow selected", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val map = HashMap<String, Any>()
             map["breedingDate"] = breed
             map["deliveryDate"] = delivery
-            map["notes"] = etNotes.text.toString()
+            map["notes"] = notes
 
-            db.child("cows")
-                .child(cow)
+            db.child("users_data")
+                .child(uid)
+                .child("cows")
+                .child(cowKey)
                 .child("pregnancy")
                 .setValue(map)
-
-            Toast.makeText(this, "Pregnancy Added ✅", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Pregnancy Added", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to save pregnancy", Toast.LENGTH_SHORT).show()
+                }
         }
 
         dialog.show()

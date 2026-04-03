@@ -1,6 +1,7 @@
 package com.example.cattlemanagement
 
 data class CowModel(
+    var firebaseKey: String = "",
     var cowNo: String = "",
     var dob: String = "",
     var bornType: String = "",
@@ -14,9 +15,8 @@ data class CowModel(
     var pregnancyDate: String = "",
     var medical: String = "",
     var remarks: String = "",
-    var location: String = "",
     var progesterone: String = "",
     var vaccines: Map<String, String> = HashMap(),
-    var imagePath: String = "",   // Local phone path
+    var imagePath: String = "",
     var time: Long = 0L
 )

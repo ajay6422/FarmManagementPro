@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
-    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +15,6 @@
         android:fontFamily="@font/bold"
         android:layout_marginTop="40dp"/>
 
-    <!-- Form -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -28,9 +26,6 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Cow Image -->
-
-            <!-- Cow Number -->
             <ImageView
                 android:id="@+id/imgCow"
                 android:layout_width="match_parent"
@@ -63,7 +58,6 @@
                     android:src="@drawable/ic_cow"/>
             </RelativeLayout>
 
-            <!-- DOB -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -91,63 +85,35 @@
                     android:src="@drawable/ic_calender"/>
             </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Cow Purchased/Born On Farm"
-                    android:fontFamily="@font/bold"
-                    android:textSize="17dp"
-                    android:textColor="@color/textColor"
-                    android:layout_marginTop="20dp">
-
-                </TextView>
-                <RadioGroup
-                    android:id="@+id/Location"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/purchased"
-                        android:text="Purchased"/>
-
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/born"
-                        android:text="Born On Farm"
-                        android:layout_marginStart="120dp"/>
-
-                </RadioGroup>
-
-            <!-- Born Type -->
-            <RelativeLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/input_box_bg"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:layout_height="wrap_content"
+                android:text="Cow Purchased/Born On Farm"
+                android:fontFamily="@font/bold"
+                android:textSize="17sp"
+                android:textColor="@color/textColor"
+                android:layout_marginTop="20dp"/>
 
-                <EditText
-                    android:id="@+id/etBornType"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@null"
-                    android:hint="Born on Farm / Purchased"
-                    android:paddingEnd="40dp"/>
+            <RadioGroup
+                android:id="@+id/Location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="26dp"
-                    android:layout_height="26dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/home"/>
-            </RelativeLayout>
+                <RadioButton
+                    android:id="@+id/purchased"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Purchased"/>
 
-            <!-- Lactation -->
+                <RadioButton
+                    android:id="@+id/born"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Born On Farm"
+                    android:layout_marginStart="40dp"/>
+            </RadioGroup>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -172,7 +138,6 @@
                     android:src="@drawable/ic_layers"/>
             </RelativeLayout>
 
-            <!-- Sire -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -197,7 +162,6 @@
                     android:src="@drawable/ic_sire"/>
             </RelativeLayout>
 
-            <!-- Dam -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -273,6 +237,7 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/milk"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -296,7 +261,6 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_calender"/>
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -323,8 +287,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_calender"/>
-
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -351,12 +315,13 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/ic_calender"/>
             </RelativeLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Progesterone Test"
                 android:fontFamily="@font/bold"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textColor="@color/textColor"
                 android:layout_marginTop="20dp"/>
@@ -368,21 +333,21 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rbProg1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rbProg1"
                     android:text="1 Month"/>
 
                 <RadioButton
+                    android:id="@+id/rbProg3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rbProg3"
                     android:text="3 Months"/>
 
                 <RadioButton
+                    android:id="@+id/rbProg7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rbProg7"
                     android:text="7 Months"/>
             </RadioGroup>
 
@@ -409,6 +374,7 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/medical"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -440,10 +406,9 @@
                 android:textStyle="bold"
                 android:fontFamily="@font/bold"
                 android:textColor="@color/textColor"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:layout_marginTop="20dp"/>
 
-            <!-- Vaccine Row Template -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -452,9 +417,9 @@
                 android:layout_marginTop="10dp">
 
                 <CheckBox
+                    android:id="@+id/cbFMD"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbFMD"
                     android:text="FMD / HS"/>
 
                 <EditText
@@ -477,9 +442,9 @@
                 android:gravity="center_vertical">
 
                 <CheckBox
+                    android:id="@+id/cbRabies"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbRabies"
                     android:text="Rabies"/>
 
                 <EditText
@@ -502,9 +467,9 @@
                 android:gravity="center_vertical">
 
                 <CheckBox
+                    android:id="@+id/cbTT"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbTT"
                     android:text="TT"/>
 
                 <EditText
@@ -527,9 +492,9 @@
                 android:gravity="center_vertical">
 
                 <CheckBox
+                    android:id="@+id/cbLumpy"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbLumpy"
                     android:text="Lumpy"/>
 
                 <EditText
@@ -552,9 +517,9 @@
                 android:gravity="center_vertical">
 
                 <CheckBox
+                    android:id="@+id/cbThileria"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbThileria"
                     android:text="Thileria"/>
 
                 <EditText
@@ -577,9 +542,9 @@
                 android:gravity="center_vertical">
 
                 <CheckBox
+                    android:id="@+id/cbBrucella"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/cbBrucella"
                     android:text="Brucella"/>
 
                 <EditText
@@ -595,23 +560,19 @@
                     android:layout_marginStart="40dp"/>
             </LinearLayout>
 
-
-            <!-- Save -->
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:text="Save Cow"
                 android:fontFamily="@font/bold"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/accent"
                 android:layout_marginTop="24dp"/>
-
         </LinearLayout>
     </ScrollView>
 
-    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation1"
         android:layout_width="match_parent"
@@ -621,5 +582,4 @@
         app:itemIconTint="@color/textColor"
         app:itemTextColor="@color/textColor"
         app:menu="@menu/bottom_nav_buttons"/>
-
 </LinearLayout>
