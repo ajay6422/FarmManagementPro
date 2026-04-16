@@ -1,0 +1,198 @@
+package com.ajaykumar.cattlemanagement
+
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+
+class BiProducts : AppCompatActivity() {
+
+    private lateinit var recycler: RecyclerView
+    private lateinit var tvCartCount: TextView
+    private lateinit var biProductAdapter: ProductAdapter
+    private lateinit var productList: List<Product>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_bi_products)
+
+        val backBtn = findViewById<ImageView>(R.id.biProductsBackBtn)
+        val cartBtn = findViewById<ImageView>(R.id.biProductsCartBtn)
+        tvCartCount = findViewById(R.id.tvCartBadge)
+        recycler = findViewById(R.id.productsRecycler)
+
+        backBtn.setOnClickListener { finish() }
+
+        cartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
+
+        recycler.layoutManager = GridLayoutManager(this, 2)
+
+        productList = listOf(
+            Product(
+                name = "A2 Gir Bilona Ghee (500ml)",
+                price = "₹1499",
+                oldPrice = "₹1799",
+                discount = "17% OFF",
+                weight = "500 ml",
+                image = R.drawable.pro_1,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=A2+gir+bilona+ghee+500ml",
+                description = "Traditional bilona-style A2 ghee product for household use.",
+                benefits = "Useful for cooking, daily diet use, and premium dairy-product buyers.",
+                usage = "Store in a cool dry place and use a clean spoon."
+            ),
+            Product(
+                name = "Krishiv Organic A2 Gir Bilona",
+                price = "₹2499",
+                oldPrice = "₹3399",
+                discount = "26% OFF",
+                weight = "1 Liter",
+                image = R.drawable.pro_2,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=krishiv+organic+a2+gir+bilona+ghee+1+liter",
+                description = "Organic A2 bilona ghee made for premium kitchen and wellness use.",
+                benefits = "Suitable for regular cooking and users preferring traditional dairy products.",
+                usage = "Keep sealed after use and avoid moisture contamination."
+            ),
+            Product(
+                name = "DEV DHUNI - 100% Pure",
+                price = "₹349",
+                oldPrice = "₹499",
+                discount = "30% OFF",
+                weight = "100 gm",
+                image = R.drawable.pro_3,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=dev+dhuni+pure+cow+dung+dhoop",
+                description = "Cow-dung-based dhoop product for home, pooja, and natural fragrance use.",
+                benefits = "Useful for ritual use, fragrance, and smoke-based traditional applications.",
+                usage = "Light carefully in a safe holder and keep away from children."
+            ),
+            Product(
+                name = "Cow Dung Panchgavya Cups",
+                price = "₹299",
+                oldPrice = "₹999",
+                discount = "70% OFF",
+                weight = "105 Pieces",
+                image = R.drawable.pro_4,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=cow+dung+panchgavya+cups+hawan",
+                description = "Panchgavya cups prepared for hawan, pooja, and ritual use.",
+                benefits = "Helps in bulk ritual usage and is easy to store and handle.",
+                usage = "Use in ventilated space and store in a dry area."
+            ),
+            Product(
+                name = "Anveshan A2 Cow Ghee",
+                price = "₹1607",
+                oldPrice = "₹2160",
+                discount = "26% OFF",
+                weight = "1 Kg",
+                image = R.drawable.pro_5,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=anveshan+a2+cow+ghee+1kg",
+                description = "Premium A2 cow ghee suitable for daily cooking and traditional food preparation.",
+                benefits = "Useful for premium food applications and household dairy consumption.",
+                usage = "Store properly and use with a dry spoon."
+            ),
+            Product(
+                name = "Vermicompost",
+                price = "₹227",
+                oldPrice = "₹499",
+                discount = "55% OFF",
+                weight = "5 Kg",
+                image = R.drawable.pro_6,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=vermicompost+organic+fertilizer+5kg",
+                description = "Organic vermicompost for plants, gardens, and farm soil enrichment.",
+                benefits = "Improves soil quality, supports plant growth, and is easy to apply.",
+                usage = "Mix into soil near roots as per crop or plant requirement."
+            ),
+            Product(
+                name = "Cow Dung Manure Fertilizers",
+                price = "₹195",
+                oldPrice = "₹299",
+                discount = "35% OFF",
+                weight = "Organic Pack",
+                image = R.drawable.pro_7,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=cow+dung+manure+organic+fertilizer",
+                description = "Organic manure product for gardening and farm application.",
+                benefits = "Supports natural farming practices and improves soil fertility.",
+                usage = "Apply around plants or field area according to requirement."
+            ),
+            Product(
+                name = "Sandalwood Chandan Dhoop Batti",
+                price = "₹299",
+                oldPrice = "₹420",
+                discount = "29% OFF",
+                weight = "Pack of 1",
+                image = R.drawable.pro_8,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=sandalwood+chandan+dhoop+batti",
+                description = "Fragrant dhoop batti product for home and prayer use.",
+                benefits = "Useful for fragrance, pooja setting, and daily ritual applications.",
+                usage = "Burn safely in incense holder in a ventilated area."
+            ),
+            Product(
+                name = "Two Brothers Organic Ghee",
+                price = "₹3202",
+                oldPrice = "₹3599",
+                discount = "11% OFF",
+                weight = "1 Liter",
+                image = R.drawable.pro_9,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=two+brothers+organic+ghee+1+liter",
+                description = "Organic ghee for regular use in cooking and premium dairy consumption.",
+                benefits = "Suitable for kitchens seeking traditional-style dairy products.",
+                usage = "Seal tightly after each use and keep away from direct sunlight."
+            ),
+            Product(
+                name = "Vedic Premium A2 Gir Cow Ghee",
+                price = "₹2029",
+                oldPrice = "₹2299",
+                discount = "12% OFF",
+                weight = "1 Liter",
+                image = R.drawable.pro_10,
+                imageUrl = "https://m.media-amazon.com/images/I/71dNVMjpVdL._SX679_.jpg",
+                link = "https://www.amazon.in/s?k=vedic+premium+a2+gir+cow+ghee+1+liter",
+                description = "Premium A2 Gir cow ghee aimed at users who prefer traditional dairy products.",
+                benefits = "Suitable for cooking, diet use, and premium grocery selection.",
+                usage = "Use a clean spoon and store in a cool, dry place."
+            )
+        )
+
+        biProductAdapter = ProductAdapter(
+            products = productList,
+            onProductClick = { product ->
+                val intent = Intent(this, ProductDetailsActivity::class.java)
+                intent.putExtra("product", product)
+                startActivity(intent)
+            },
+            onAddToCart = { product ->
+                CartManager.addToCart(product)
+                updateCartCount()
+                Toast.makeText(this, "${product.name} added to cart", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        recycler.adapter = biProductAdapter
+        updateCartCount()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateCartCount()
+    }
+
+    private fun updateCartCount() {
+        val count = CartManager.getCount()
+        tvCartCount.text = count.toString()
+        tvCartCount.visibility = if (count > 0) View.VISIBLE else View.GONE
+    }
+}
