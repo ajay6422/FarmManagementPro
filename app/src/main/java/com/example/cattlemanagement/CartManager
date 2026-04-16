@@ -1,0 +1,61 @@
+package com.ajaykumar.cattlemanagement
+
+object CartManager {
+
+    data class CartItem(
+        val product: Product,
+        var quantity: Int = 1
+    )
+
+    private val cartItems = mutableListOf<CartItem>()
+
+    fun addToCart(product: Product) {
+        val existing = cartItems.find { it.product.name == product.name }
+        if (existing != null) {
+            existing.quantity++
+        } else {
+            cartItems.add(CartItem(product))
+        }
+    }
+
+    fun removeFromCart(product: Product) {
+        cartItems.removeAll { it.product.name == product.name }
+    }
+
+    fun increaseQty(product: Product) {
+        val item = cartItems.find { it.product.name == product.name }
+        if (item != null) {
+            item.quantity++
+        }
+    }
+
+    fun decreaseQty(product: Product) {
+        val item = cartItems.find { it.product.name == product.name }
+        if (item != null) {
+            if (item.quantity > 1) {
+                item.quantity--
+            } else {
+                cartItems.remove(item)
+            }
+        }
+    }
+
+    fun getItems(): List<CartItem> = cartItems.toList()
+
+    fun getCount(): Int = cartItems.sumOf { it.quantity }
+
+    fun getTotal(): Int {
+        return cartItems.sumOf { item ->
+            val price = item.product.price
+                .replace("₹", "")
+                .replace(",", "")
+                .trim()
+                .toIntOrNull() ?: 0
+            price * item.quantity
+        }
+    }
+
+    fun clearCart() {
+        cartItems.clear()
+    }
+}
