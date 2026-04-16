@@ -1,0 +1,84 @@
+package com.ajaykumar.cattlemanagement
+
+import android.graphics.Paint
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+
+class CartAdapter(
+    private val onQuantityChanged: () -> Unit,
+    private val onRemove: () -> Unit
+) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+
+    private var items: MutableList<CartManager.CartItem> = CartManager.getItems().toMutableList()
+
+    fun refresh() {
+        items = CartManager.getItems().toMutableList()
+        notifyDataSetChanged()
+    }
+
+    class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val image: ImageView = itemView.findViewById(R.id.cartItemImage)
+        val name: TextView = itemView.findViewById(R.id.cartItemName)
+        val weight: TextView = itemView.findViewById(R.id.cartItemWeight)
+        val price: TextView = itemView.findViewById(R.id.cartItemPrice)
+        val oldPrice: TextView = itemView.findViewById(R.id.cartItemOldPrice)
+        val discount: TextView = itemView.findViewById(R.id.cartItemDiscount)
+        val qty: TextView = itemView.findViewById(R.id.cartItemQty)
+        val btnIncrease: TextView = itemView.findViewById(R.id.btnIncrease)
+        val btnDecrease: TextView = itemView.findViewById(R.id.btnDecrease)
+        val btnRemove: ImageView = itemView.findViewById(R.id.btnRemoveItem)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cart, parent, false)
+        return CartViewHolder(view)
+    }
+
+    override fun getItemCount() = items.size
+
+    override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
+        val cartItem = items[position]
+        val product = cartItem.product
+
+        holder.name.text = product.name
+        holder.weight.text = product.weight
+        holder.price.text = product.price
+        holder.oldPrice.text = product.oldPrice
+        holder.discount.text = product.discount
+        holder.qty.text = cartItem.quantity.toString()
+        holder.oldPrice.paintFlags = holder.oldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+
+        if (product.imageUrl.isNotEmpty()) {
+            Glide.with(holder.itemView.context)
+                .load(product.imageUrl)
+                .placeholder(product.image)
+                .error(product.image)
+                .into(holder.image)
+        } else {
+            holder.image.setImageResource(product.image)
+        }
+
+        holder.btnIncrease.setOnClickListener {
+            CartManager.increaseQty(product)
+            refresh()
+            onQuantityChanged()
+        }
+
+        holder.btnDecrease.setOnClickListener {
+            CartManager.decreaseQty(product)
+            refresh()
+            onQuantityChanged()
+        }
+
+        holder.btnRemove.setOnClickListener {
+            CartManager.removeFromCart(product)
+            refresh()
+            onRemove()
+        }
+    }
+}
