@@ -1,0 +1,85 @@
+package com.ajaykumar.cattlemanagement
+
+import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
+import android.graphics.Paint
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+
+class ProductDetailsActivity : AppCompatActivity() {
+
+    private var product: Product? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_product_details)
+
+        val backBtn = findViewById<ImageView>(R.id.detailsBackBtn)
+        val cartBtn = findViewById<ImageView>(R.id.detailsCartBtn)
+        val image = findViewById<ImageView>(R.id.detailsProductImage)
+        val name = findViewById<TextView>(R.id.detailsProductName)
+        val weight = findViewById<TextView>(R.id.detailsProductWeight)
+        val price = findViewById<TextView>(R.id.detailsProductPrice)
+        val oldPrice = findViewById<TextView>(R.id.detailsProductOldPrice)
+        val discount = findViewById<TextView>(R.id.detailsProductDiscount)
+        val description = findViewById<TextView>(R.id.detailsDescription)
+        val benefits = findViewById<TextView>(R.id.detailsBenefits)
+        val usage = findViewById<TextView>(R.id.detailsUsage)
+        val btnAddToCart = findViewById<Button>(R.id.btnDetailsAddToCart)
+        val btnBuyNow = findViewById<Button>(R.id.btnDetailsBuyNow)
+
+        product = intent.getSerializableExtra("product") as? Product
+
+        if (product == null) {
+            Toast.makeText(this, "Product not found", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
+        val currentProduct = product!!
+
+        name.text = currentProduct.name
+        weight.text = currentProduct.weight
+        price.text = currentProduct.price
+        oldPrice.text = currentProduct.oldPrice
+        discount.text = currentProduct.discount
+        description.text = currentProduct.description
+        benefits.text = currentProduct.benefits
+        usage.text = currentProduct.usage
+        oldPrice.paintFlags = oldPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+
+        if (currentProduct.imageUrl.isNotEmpty()) {
+            Glide.with(this)
+                .load(currentProduct.imageUrl)
+                .placeholder(currentProduct.image)
+                .error(currentProduct.image)
+                .into(image)
+        } else {
+            image.setImageResource(currentProduct.image)
+        }
+
+        backBtn.setOnClickListener { finish() }
+
+        cartBtn.setOnClickListener {
+            startActivity(Intent(this, CartActivity::class.java))
+        }
+
+        btnAddToCart.setOnClickListener {
+            CartManager.addToCart(currentProduct)
+            Toast.makeText(this, "${currentProduct.name} added to cart", Toast.LENGTH_SHORT).show()
+        }
+
+        btnBuyNow.setOnClickListener {
+            try {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(currentProduct.link)))
+            } catch (e: Exception) {
+                Toast.makeText(this, "Unable to open link", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
